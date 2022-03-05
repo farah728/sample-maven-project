@@ -1,9 +1,4 @@
-# syntax=docker/dockerfile:1
-FROM openjdk:8
-WORKDIR /maven-project
-COPY .mvn/ .mvn
-COPY mvnw pom.xml ./
-RUN ./mvnw dependency:go-offline
-COPY src ./src
+FROM openjdk:8-jdk-alpine
+EXPOSE 9090
 ADD target/cravejava-app-1.0.jar cravejava-app-1.0.jar
-ENTRYPOINT ["java", "-jar","/cravejava-app-1.0.jar"]
+ENTRYPOINT ["java","-jar","/cravejava-app-1.0.jar"]
